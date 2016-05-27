@@ -1,7 +1,7 @@
 <h1>Complete your purchase:</h1>
 
 <h4>To finish up, please provide all of the following information:</h4><br>
-<%= form_for @order, html: { :class => "form-horizontal center" } do |f| %>
+<%= form_for @order, url: before_shipping_path(@order), html: { :class => "form-horizontal center" } do |f| %>
 
   <div class="form-group">
   <%= f.label :email, class: "col-xs-4 control-label required" %>
@@ -56,8 +56,7 @@
   <%= f.text_field :billing_zip, class: "form-control" , maxlength: 5, required: true %>
 
 
-  <%= f.hidden_field :status, value: "Completed" %>
-
   <br>
-  <%= f.submit "Complete Purchase", class:"btn btn-success btn-lg" %>
+  <%= f.submit "Continue to shipping options", class:"btn btn-success btn-lg" %>
+
   <% end %>

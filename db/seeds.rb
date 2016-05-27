@@ -77,3 +77,7 @@ Review.create(rating: 5, description: "So cute and fluffy!", product_id: 25)
 @products.each do |product|
   product.update_rating
 end
+
+order = Order.create(billing_zip: '98117')
+item = Orderitem.create(order_id: 1)
+order.orderitems << item

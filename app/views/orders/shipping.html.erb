@@ -1,0 +1,12 @@
+<h1>Choose your shipping:</h1>
+
+<h4>To finish up, please provide all of the following information:</h4><br>
+<%= form_for @order, url: order_update_shipping_path(@order), method: :patch, html: { :class => "form-horizontal center shipping-form" } do |f| %>
+
+  <% @shipping_options.each do |carrier, estimate| %>
+    <p><%= f.radio_button :shipping_method, {carrier => [estimate[0], estimate[1]] }.to_json  %>
+    <%= f.label :shipping_method, "#{carrier}: $#{sprintf "%.2f",(estimate[0] / 100.0)}" %></p>
+  <% end %>
+
+  <%= f.submit "Submit", class:"btn btn-success btn-lg shipping-form-submit" %>
+<% end %>
